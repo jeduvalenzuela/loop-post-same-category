@@ -1,1 +1,1 @@
-# loop-post-ssme-category
+# loop-post-same-category
