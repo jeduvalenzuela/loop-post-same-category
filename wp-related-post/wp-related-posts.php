@@ -3,8 +3,7 @@
  * Plugin Name: WP Posts Relacionados
  * Description: Este plugin muestra un listado de posts basándose en las categorías del post que está visualizando el usuario
  * Version: 1.0.0
- * Author: Eduardo Valenzuela
- * Author URI: https://gavaweb.com/Eduardo-Valenzuela
+ * Author: Vicino Software
  * License: GPL-3.0+
  */
 
@@ -29,7 +28,7 @@ function wp_related_posts() {
     $args = array(
         'category__in' => $cat_ids,
         'post_type' => $current_post_type,
-        'posts_per_page' => '6',
+        'posts_per_page' => '20',
         'post__not_in' => array( $post_id )
     );
 
@@ -39,11 +38,7 @@ function wp_related_posts() {
 if ( $query->have_posts() ) {
  
     ?>
-    <aside class="related-posts">
-        <h3>
-            <?php _e( 'Posts Relacionados', 'wpdirecto' ); ?>
-        </h3>
-        <ul class="related-posts">
+        <ul class="related-products">
             <?php
  
                 while ( $query->have_posts() ) {
@@ -52,9 +47,9 @@ if ( $query->have_posts() ) {
  
                     ?>
                     <li>
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_title(); ?>
-
+                        <a class="related-product" href="<?php the_permalink(); ?>">
+                            <h3 class="related-title" ><?php the_title(); ?></h3>
+                            <?php the_post_thumbnail();?>
                         </a>
                     </li>
                     <?php
@@ -63,7 +58,6 @@ if ( $query->have_posts() ) {
  
             ?>
         </ul>
-    </aside>
     <?php
  
 }
