@@ -32,9 +32,9 @@ function wp_related_posts() {
         'posts_per_page' => '6',
         'post__not_in' => array( $post_id )
     );
-}
 
-$query = new WP_Query( $args );
+
+    $query = new WP_Query( $args );
  
 if ( $query->have_posts() ) {
  
@@ -54,6 +54,7 @@ if ( $query->have_posts() ) {
                     <li>
                         <a href="<?php the_permalink(); ?>">
                             <?php the_title(); ?>
+
                         </a>
                     </li>
                     <?php
@@ -66,6 +67,11 @@ if ( $query->have_posts() ) {
     <?php
  
 }
+
+}
+
+
  
 wp_reset_postdata();
 
+add_shortcode('looppostrelated', 'wp_related_posts');

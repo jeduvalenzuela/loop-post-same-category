@@ -1,1 +1,0 @@
-# loop-post-same-category
